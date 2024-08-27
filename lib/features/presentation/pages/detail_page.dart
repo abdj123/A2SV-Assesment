@@ -16,6 +16,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   bool isExpanded = false;
+  int count = 1;
   @override
   Widget build(BuildContext context) {
     final args = widget.product;
@@ -211,26 +212,42 @@ class _DetailPageState extends State<DetailPage> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Row(
                 children: [
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(6.0),
-                      child: Center(child: Icon(Icons.add)),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        count += 1;
+                      });
+                    },
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: Center(child: Icon(Icons.add)),
+                      ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: reusableText("1", FontWeight.w400, 22),
+                    child: reusableText("$count", FontWeight.w400, 22),
                   ),
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black)),
-                    child: const Padding(
-                      padding: EdgeInsets.all(6.0),
-                      child: Center(child: Icon(Icons.remove)),
+                  GestureDetector(
+                    onTap: () {
+                      if (count > 0) {
+                        setState(() {
+                          count -= 1;
+                        });
+                      }
+                    },
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black)),
+                      child: const Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: Center(child: Icon(Icons.remove)),
+                      ),
                     ),
                   ),
                   const Spacer(),

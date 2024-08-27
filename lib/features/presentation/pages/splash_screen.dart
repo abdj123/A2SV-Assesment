@@ -1,6 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:groceries_app/features/presentation/pages/home_page.dart';
+import 'package:groceries_app/features/presentation/pages/nav_bar.dart';
 import 'package:page_transition/page_transition.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -47,7 +47,7 @@ class SplashScreen extends StatelessWidget {
               animationDuration: const Duration(milliseconds: 1500),
               backgroundColor: Colors.transparent,
               pageTransitionType: PageTransitionType.fade,
-              nextScreen: const HomePage(),
+              nextScreen: const LandingPage(),
             ),
           ),
         ],
